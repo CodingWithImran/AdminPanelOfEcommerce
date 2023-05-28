@@ -51,6 +51,7 @@ public class AddAllProductActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private StorageReference storageReference;
     ProgressDialog progressDialog;
+    String productId = UUID.randomUUID().toString();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,6 +154,7 @@ public class AddAllProductActivity extends AppCompatActivity {
                         AllProductModal product;
                         if (mimeType.startsWith("image/")) {
                             product = new AllProductModal(imageUrl, description, productName,Integer.parseInt(stock),  Integer.parseInt(price));
+                            product.setProductId(productId);
                             db.collection("AllProducts").add(product).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
@@ -170,6 +172,7 @@ public class AddAllProductActivity extends AppCompatActivity {
                             product = new AllProductModal( description, productName, Integer.parseInt(price));
                             product.setProduct_video(imageUrl);
                             product.setStockProduct(Integer.parseInt(stock));
+                           product.setProductId(productId);
                             db.collection("AllProducts").add(product).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {

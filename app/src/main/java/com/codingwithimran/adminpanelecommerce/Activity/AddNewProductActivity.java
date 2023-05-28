@@ -31,6 +31,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.UUID;
+
 public class AddNewProductActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 4;
 
@@ -47,6 +49,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private StorageReference storageReference;
+    String productId = UUID.randomUUID().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +137,7 @@ public class AddNewProductActivity extends AppCompatActivity {
                         if (mimeType.startsWith("image/")) {
                             product = new AllProductModal(imageUrl, description, productName, Integer.parseInt(stock), Integer.parseInt(price));
                             product.setStockProduct(Integer.parseInt(stock));
+                            product.setProductId(productId);
                             db.collection("NewProducts").add(product).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
@@ -148,6 +152,8 @@ public class AddNewProductActivity extends AppCompatActivity {
                             });
                         } else if (mimeType.startsWith("video/")) {
                             product = new AllProductModal( description, productName, Integer.parseInt(price));
+                            product.setStockProduct(Integer.parseInt(stock));
+                            product.setProductId(productId);
                             product.setProduct_video(imageUrl);
                             db.collection("NewProducts").add(product).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
