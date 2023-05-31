@@ -32,8 +32,8 @@ public class LuckyDrawAdapter extends RecyclerView.Adapter<LuckyDrawAdapter.view
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         LuckDrawModal modal = list.get(position);
-        holder.name.setText(modal.getName());
-        holder.email.setText(modal.getEmail());
+        holder.name.setText(modal.getMy_name());
+        holder.email.setText(modal.getMy_email());
     }
 
     @Override

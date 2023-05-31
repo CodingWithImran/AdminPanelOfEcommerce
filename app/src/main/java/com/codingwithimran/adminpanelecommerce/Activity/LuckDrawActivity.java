@@ -39,7 +39,6 @@ public class LuckDrawActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         list = new ArrayList<>();
-        list.add(new LuckDrawModal("imran", "ali@gmail.com"));
 
         adapter = new LuckyDrawAdapter(this, list);
         recyclerView.setAdapter(adapter);

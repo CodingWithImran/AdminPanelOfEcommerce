@@ -1,14 +1,14 @@
 package com.codingwithimran.adminpanelecommerce.Modals;
 
 public class LuckDrawModal {
-    String id, name, email;
+    String id, my_email, my_name;
 
     public LuckDrawModal() {
     }
 
-    public LuckDrawModal(String name, String email) {
-        this.name = name;
-        this.email = email;
+    public LuckDrawModal(String my_email, String my_name) {
+        this.my_email = my_email;
+        this.my_name = my_name;
     }
 
     public String getId() {
@@ -19,19 +19,19 @@ public class LuckDrawModal {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getMy_email() {
+        return my_email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMy_email(String my_email) {
+        this.my_email = my_email;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMy_name() {
+        return my_name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMy_name(String my_name) {
+        this.my_name = my_name;
     }
 }
